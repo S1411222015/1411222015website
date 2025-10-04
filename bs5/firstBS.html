@@ -22,7 +22,7 @@
     <style>
 #grad1 {
   height: 400px;
-  background-image: linear-gradient(to top, green, lightgreen);
+  background-image: linear-gradient(to top, green, rgb(160, 248, 134));
 }
 
 .content-block {
@@ -41,32 +41,46 @@
       <div class="row">
         <div class="col">
           <h1 class="my-1 text-light"></h1>
-          <p class="text-light fs-4 ps-1 ms-5 mb-1">FREECSS_JQUERYBLOCK</p>
+          <p class="text-light fs-4 ps-1 ms-5 mb-1 fw-bold">FREECSS_JQUERYBLOCK</p>
         </div>
       </div>
       <div class="row ps-3 md-2 rounded-4">
-        <p class="text-light col-12 col-6 col-6 ps-0 ms-5 mb-5">SMALLCOMPANY GOES HERE</p>
+        <p class="text-light col-12 col-6 col-6 ps-0 ms-5 mb-5 fw-bold">SMALLCOMPANY GOES HERE</p>
       </div>
   </div>
-
-  <div class="container col-12 col-6">
-    <div class="row g-0 text-center">
-      <div class="col mb-5">
-        <button type="button" class="btn bg-gradient bg-success text-white w-200">HOME</button>
-      </div>
-      <div class="col">
-        <button type="button" class="btn bg-gradient bg-success text-white w-200">BLOG</button>
-      </div>
-      <div class="col">
-        <button type="button " class="btn bg-gradient bg-success text-white w-200 ">GALLERY</button>
-      </div>
-      <div class="col">
-        <button type="button" class="btn bg-gradient bg-success text-white w-200">CONTACT</button>
-      </div>
+  
+<div class="container">
+<nav class="navbar navbar-light bg-success">
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-md bg-success">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon "></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">BLOG</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">GALLERY</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">CONTACT</a>
+        </li>
+      </ul>
     </div>
   </div>
+</nav>
+</nav>
+</div>
+
 
   <img src="web/header4.jpg" class="img-thumbnail mx-auto d-block " alt="header4.jpg">
+
 
   <div class="container my-5">
   <div class="row ms-5 ps-5">
@@ -115,7 +129,7 @@
     <div class="d-flex align-items-start mb-3">
       <img src="web/images6.jpg" class="me-3" alt="images6.jpg" width="60">
       <div>
-        <p><a href="#">Praesent eu ligula</a></p>
+        <p class="fs-6">Praesent eu ligula</p>
         <p class="fs-6">Sit amet, ectetuer adipiscing elit. <a class="text-success">More</a></p>
       </div>
     </div>
@@ -123,7 +137,7 @@
     <div class="d-flex align-items-start mb-3">
       <img src="web/images7.jpg" class="me-3" alt="images7.jpg" width="60">
       <div>
-        <p><a href="#">Proin cursus</a></p>
+        <p class="fs-6">Proin cursus</p>
         <p class="fs-6">Neque porro quisquam est, qui dolorem. <a class="text-success">More</a></p>
       </div>
     </div>
@@ -131,7 +145,7 @@
     <div class="d-flex align-items-start">
       <img src="web/images8.jpg" class="me-3" alt="images8.jpg" width="60">
       <div>
-        <p><a href="#">Cras interdum</a></p>
+        <p class="fs-6">Cras interdum</p>
         <p class="fs-6">Quis autem vel eum iure reprehenderit. <a class="text-success">More</a></p>
       </div>
     </div>
@@ -165,6 +179,77 @@ viverra libero augue et quam. </p>
     <li><a href="#"class="list-group-item">MOLESTIAS EXCEPTURI SINT OCCAECAT</a></li>
   </ul>
 </div>
+
+
+
+
+
+  
+
+</div>
+  </div>
+  </div>
+
+<footer class="footer-gradient text-center text-white">
+  <div class="container">
+  <div class="row">
+
+  <div class="col-md-4">
+    <ul class="list-unstyled me-1"></ul>
+    
+    <h4>Recent posts</h4>
+    <p class="text-start ms-3 small">Suspensisse rutrum interdum lacinia.
+Suspensisse tempus aliquet elit sit amet pellentesque. Donec iaculis pulvinar mauris, ac vulputate justo pretium quis.</p>
+<p class="text-start ms-3 small">Quisque luctus, mi ornare malesuada
+Suspensisse tempus aliquet elit sit amet pellentesque. Donec iaculis pulvinar</p>
+   
+  </div>
+  
+
+  <div class="col-md-4">
+    <ul class="list-unstyled"></ul>
+  <h4>Share with Others</h4>
+  <p class="text-center small">SUBSCRIBE TO BLOG</p>
+  <p class="text-center small">Be a fan on Facebook</p>
+  <p class="text-center small">RSS Feed</p>
+  <p class="text-center small">Follow us on Twitter</p>
+
+  </div>
+  
+  
+  <div class="col-md-4 lh-1">
+    <ul class="list-unstyled"></ul>
+  <h4>Useful Resources</h4>
+  
+  <p class="small">Lorem Ipsum dolor</p>
+  <p class="small">Maecenas in turpis</p>
+  <p class="small">Morbi fringilla libero</p>
+  <p class="small">In venenatis metus vel</p>
+  <p class="small">Donec cursus quam ac</p>
+
+  </div>
+
+  </div>
+  </div>
+  
+
+<div class="text-center mt-1 fs-6">
+  Website Templates <br>
+  Privacy Policy | Terms of Use | CSS
+</div>
+
+</footer>
+
+<style>
+ 
+
+  .footer-gradient {
+    width: 100vw;
+    height: 300px;
+    background: linear-gradient(to top, #23792d, #9ae065);
+    
+  }
+</style>
 
 </body>
 </html>
