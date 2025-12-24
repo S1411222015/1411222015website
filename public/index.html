@@ -27,6 +27,7 @@
     </button>
 
     
+    
     <div class="collapse d-lg-block" id="sidebarMenu">
       <div class="sidebar p-3">
         <img src="img/logo.png" class="mb-3 d-block mx-0" alt="Logo" style="width:270px;">
@@ -61,9 +62,31 @@
       },
       y:-100,scale:1,duration:3
     });
-    gsap.to("#down",{opacity:0.5,duration:3});
+
+  gsap.to("#down", {
+    scrollTrigger: {
+      trigger: "#title",
+      start: "top 250px",
+      end: "bottom 100px",
+      markers: false
+    },
+    y: 100,      // ← 改成正值，往下
+    scale: 1,
+    duration: 3
+});
+
     gsap.to("#water",{x:-20,opacity:0.6,scale:1,duration:2});
-    gsap.to("#title",{y:90,x:20,scale:2,duration:3});
+   gsap.to("#title", {
+  scrollTrigger: {
+    trigger: "#title",
+    start: "top 250px",
+    end: "bottom 100px",
+    scrub: true,      //  跟著滾動
+    markers: false
+  },
+  scale: 1.5         // 從原本 scale:1 → 放大到 1.5
+});
+
 </script>
 <script>
   let colors = ["#8FB3D9", "#fec5fb", "#1F7AE0", "#9d95ff", "#EAF6FF", "#00bae2"];
