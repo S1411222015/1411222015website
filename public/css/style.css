@@ -1,0 +1,146 @@
+.card-img-top {
+    transition: transform 0.3s ease; /* 平滑過渡 */
+}
+
+.card-img-top:hover {
+    transform: scale(1.1); /* 放大 1.1 倍 */
+    cursor: pointer;
+}
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans TC", sans-serif;
+    overflow-x: hidden; /* 防止整頁被撐寬 */
+}
+
+header {
+    position: relative; /* 作為絕對定位子元素的參考 */
+    width: 100%;
+    height: 900px; /* 可以調整 header 高度 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header img {
+    position: absolute; /* 仍使用 absolute 可以重疊 header 內容 */
+    top: 0;
+    left: 300px;       /* 等於避開 sidebar 的寬度 */
+    width: calc(100% - 300px); /* 填滿右側區域 */
+    height: 100%;
+    object-fit: cover; /* 裁切填滿，解決白框 */
+}
+
+ #title{
+       color: #63b0c8; 
+       font-size: 10em;
+       position: relative;
+       font-family: "Times New Roman", Times, serif;
+    }
+
+.content-background {
+    background-color: #e8f4ff; /* 你想要的背景色 */
+    padding-top: 50px; /* 上方留空，避免貼近 header */
+    padding-bottom: 50px; /* 下方留空 */
+ }
+hr {
+  border: none;
+  height: 6px;
+  width: 70%;
+  margin: 50px auto;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #5c91c9,
+    transparent
+  );
+}
+
+
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: #42aaff;
+    border-radius: 60px;
+    
+  }
+
+
+        /* 左側導覽欄 */
+        .sidebar {
+            width: 300px;
+            height: 100vh;
+            background-color: #b5daff;
+            color: #fff;
+            padding-top: 250px;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+        .sidebar a {
+            color: #2f3f5c;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            padding: 12px 20px;
+            padding-top: 60px; 
+            margin: 5px 10px;
+            border-radius: 8px;
+            transition: 0.2s;
+            font-size: 20px;
+            font-family: "Times New Roman", Times, serif;
+            
+        }
+        .sidebar a:hover {
+            background-color: #90cce2;
+            color: #fff;
+        }
+
+        /* 右側內容 */
+        .content {
+            margin-left: 280px;
+            padding: 40px;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        h2 {
+        color:#154a7f;
+        }
+
+        h2 {
+            font-weight: bold;
+            font-size: 36px; /* 可以改成你想要的大小 */
+        }
+
+         h5 {
+            color:#3979ba;
+            font-weight: bold;
+        }
+
+        h4 {
+            font-size: 30px;
+            font-weight: bold;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .sc-icon {
+            width: 32px;       /* 控制圖示大小 */
+            height: 32px;
+            margin-right: 10px; /* 圖示間距 */
+            vertical-align: middle;
+        }
+        
+
+
