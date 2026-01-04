@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人網站</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+   
+
+    
+<nav class="navbar navbar-light bg-light d-lg-block">
+  <div class="container-fluid">
+    
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
+      aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    
+    <div class="collapse d-lg-block" id="sidebarMenu">
+      <div class="sidebar p-3">
+        <img src="img/logo.png" class="mb-3 d-block mx-0" alt="Logo" style="width:270px;">
+        <h4 class="text-center mb-4 pt-5">Personal portfolio</h4>
+        <a class="d-block mb-2" href="#about">關於我</a>
+        <a class="d-block mb-2" href="#portfolio">2D作品</a>
+        <a class="d-block mb-2" href="#gallery">3D作品</a>
+        <a class="d-block mb-2" href="#contact">聯絡我</a>
+      </div>
+    </div>
+  </div>
+</nav>
+    
+   <header>
+    <img id="bg" src="img/bg.png" alt="" srcset="">
+    <img id="ip" src="img/blue_ip.png"alt="" srcset="">
+    <img id="down" src="img/blue_down.png"alt="" srcset="">
+    <img id="water" src="img/blue_water.png"alt="" srcset="">
+    <h3 id="title">Portfolio</h3>
+    
+<script>
+    ScrollTrigger.defaults({
+        markers:true
+    });
+
+    gsap.to("#ip",{
+      scrollTrigger:{
+        trigger: "#title",
+        start: "top 250px",
+        end: "bottom 100px",
+        markers:false
+      },
+      y:-100,scale:1,duration:3
+    });
+    gsap.to("#down",{opacity:0.5,duration:3});
+    gsap.to("#water",{x:-20,opacity:0.3,scale:1,duration:3});
+    gsap.to("#title", {
+      scrollTrigger: {
+        trigger: "#title",
+        start: "top 50%",
+        end: "top 20%",
+        scrub: true,      
+        markers: false
+      },
+      scale: 2          
+    });
+</script>
+<script>
+  let colors = ["#8FB3D9", "#fec5fb", "#1F7AE0", "#9d95ff", "#EAF6FF", "#00bae2"];
+
+  function animate() {
+    gsap.to('.box', {
+      x: gsap.utils.random(20, 1000, 5),
+      backgroundColor: gsap.utils.random(colors),
+      duration: 1,
+      ease: "power1.inOut",
+      onComplete: animate  // 動畫結束後呼叫自己，達成持續動態
+    });
+  }
+
+  animate();  // 啟動動畫
+</script>
+
+</header>
+
+<div class="content-background">
+    <div class="content text-center">
+
+        
+        <section id="about">
+            <h2>關於我</h2>
+            <img src="img/myself.png" class="profile-img mb-3 mt-3" alt="個人大頭照">
+            <h5>多媒體設計系 1411222015 黃芷婷。</h5>
+            <p>熱愛視覺創作與數位藝術。</p>
+            <p>我擅長 2D / 3D 繪圖、建模與剪輯，喜歡把想像力變成畫面。</p>
+            <p>平常我喜歡 一邊聽音樂，一邊畫圖，這樣比較比較不會乏味。</p>
+            <p>歡迎看看我的作品，一起探索我的創作世界！</p>
+            <hr class="mt-5">
+        </section>
+<div class="box"></div>
+        
+<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+  <!-- 指示點 -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+  </div>
+
+  <!-- 圖片內容 -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/see_that.jpg" class="d-block w-100" alt="">
+    </div>
+    <div class="carousel-item">
+      <img src="img/06.jpg" class="d-block w-100" alt="">
+    </div>
+    <div class="carousel-item">
+      <img src="img/clove_pant.jpg" class="d-block w-100" alt="">
+    </div>
+  </div>
+
+
+  <!-- 左右箭頭 -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
+<marquee direction="right" height="30" scrollamount="5" behavior="alternate">2D Illustration ・ 3D Modeling ・ UV Mapping ・ Texturing ・ Lighting ・ Rendering</marquee>
+
+<div id="app" class="container mt-5">
+
+  <section id="portfolio">
+    <h2 class="mb-4">我的作品</h2>
+    <div class="row mt-4">
+      <div v-for="item in Portfolio" :key="item._id" class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img :src="item.image" class="card-img-top" :alt="item.title">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.title }}</h5>
+            <p class="card-text">{{ item.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+<script>
+const { createApp, ref, onMounted } = Vue;
+
+createApp({
+  setup() {
+    const Portfolio = ref([]);
+    const newPortfolio = ref({ title:'', description:'', image:'', href:'#' });
+
+    const fetchPortfolio = async () => {
+      try {
+        const res = await axios.get("/portfolio");
+        Portfolio.value = res.data;
+        console.log("抓到作品：", Portfolio.value);
+      } catch(err) {
+        console.error("抓資料錯誤：", err);
+      }
+    };
+
+    const addPortfolio = async () => {
+      try {
+        const res = await axios.post("/portfolio", newPortfolio.value);
+        Portfolio.value.push(res.data);
+        newPortfolio.value = { title:'', description:'', image:'', href:'#' };
+      } catch(err) {
+        console.error("新增作品錯誤：", err);
+      }
+    };
+
+    onMounted(fetchPortfolio);
+
+    return { Portfolio, newPortfolio, addPortfolio };
+  }
+}).mount("#app");
+</script>
+
+
+
+
+    <section id="gallery" class="container mt-5">
+  <h2 class="mb-4">3D作品</h2>
+  <div class="row">
+    <hr>
+    
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <img src="img/gun.jpg" class="card-img-top" alt="手槍模型">
+        <div class="card-body">
+          <h5 class="card-title">手槍模型</h5>
+          <p class="card-text">這是我製作的 3D 手槍模型(已貼圖)</p>
+        </div>
+      </div>
+    </div>
+
+   
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <img src="img/gun2.jpg" class="card-img-top" alt="散彈槍模型">
+        <div class="card-body">
+          <h5 class="card-title">散彈槍模型</h5>
+          <p class="card-text">3D散彈槍模型，這個作品是我第一次貼圖!，過程很有趣也很辛苦，學到正確拆解的uv的必要性，才能使貼圖完美貼合</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <img src="img/darts.jpg" class="card-img-top" alt="飛鏢模型">
+        <div class="card-body">
+          <h5 class="card-title">飛鏢模型</h5>
+          <p class="card-text">自己做的3D飛鏢模型</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <img src="img/scene.jpg" class="card-img-top" alt="場景模型">
+        <div class="card-body">
+          <h5 class="card-title">場景模型</h5>
+          <p class="card-text">第一次做3D場景模型，看的出來貼圖不是非常好，場景因為很吃渲染功夫還有待加強</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <img src="img/desk lamp.jpg" class="card-img-top" alt="檯燈模型">
+        <div class="card-body">
+          <h5 class="card-title">檯燈模型</h5>
+          <p class="card-text">第一次接觸建模的作品!很值得紀錄，對於形體的掌握跟拆UV學習都有很大的進展</p>
+        </div>
+      </div>
+    
+
+    </div>
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <img src="img/06.jpg" class="card-img-top" alt="室內渲染模型">
+        <div class="card-body">
+          <h5 class="card-title">室內渲染模型</h5>
+          <p class="card-text">自己製作的室內場景用阿諾渲染出圖</p>
+        </div>
+      </div>
+  </div> 
+
+  
+</section>
+</div>
+
+
+
+
+  
+
+        <!-- 聯絡我 -->
+<section id="contact" class="mt-5 py-4">
+    <div class="container">
+        <h2 class="text-center mb-4 p-3">聯絡我</h2>
+        <div class="row text-center">
+            <!-- 第一欄：Email -->
+            <div class="col-md-4 mb-3 mb-md-0">
+                <p>Email：</p>
+                <a href="mailto:xxs04021@gmail.com">xxs04021@gmail.com</a>
+            </div>
+            <!-- 第二欄：Phone -->
+            <div class="col-md-4 mb-3 mb-md-0">
+                <p>Phone：</p>
+                <span>09********(不要打給我)</span>
+            </div>
+            <!-- 第三欄：社群圖示 -->
+            <div class="col-md-4">
+                <p>社群媒體：</p>
+                <a href="#"><img src="img/fb.png" alt="fb" class="sc-icon me-2"></a>
+                <a href="#"><img src="img/ig.png" alt="ig" class="sc-icon"></a>
+            </div>
+        </div>
+    </div>
+</section>
+    </div>  
+    
+
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="js/bs5vue.js"></script> 
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+<h3 class="mt-5">新增作品</h3>
+  <form @submit.prevent="addPortfolio">
+    <input v-model="newPortfolio.title" placeholder="作品標題" required class="form-control mb-2">
+    <input v-model="newPortfolio.description" placeholder="作品描述" required class="form-control mb-2">
+    <input v-model="newPortfolio.image" placeholder="圖片路徑" required class="form-control mb-2">
+    <input v-model="newPortfolio.href" placeholder="作品連結" required class="form-control mb-2">
+    <button type="submit" class="btn btn-primary mt-2">新增作品</button>
+  </form>
+
+</div>
+
+
+</body>
+</html>
