@@ -1,3 +1,24 @@
+.sketchfab-section {
+  padding: 60px 0;
+}
+
+.sketchfab-wrap {
+  width: 100%;
+  max-width: 1200px;   /* 控制最大寬度 */
+  margin: 0 auto;
+}
+
+.sketchfab-wrap iframe {
+  width: 100%;
+  height: 70vh;        /* 🔥 直接放大 */
+  min-height: 500px;   /* 保底 */
+  border: none;
+  border-radius: 12px;
+}
+
+
+
+
 .card-img-top {
     transition: transform 0.3s ease; /* 平滑過渡 */
 }
