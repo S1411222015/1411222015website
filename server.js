@@ -34,7 +34,7 @@ initPortfolio();
 
 // 根目錄
 server.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index1.html"));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // portfolio API
