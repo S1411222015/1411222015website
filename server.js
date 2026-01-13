@@ -1,4 +1,3 @@
-var path = require("path");
 var express = require("express");
 var server = express();
 var bodyParser = require("body-parser");
@@ -17,9 +16,7 @@ server.use(fileUpload({limits:{fileSize:2*1024*1024}}))
 var DB=require("nedb-promises");
 var ServiceDB = DB.create(__dirname+"/Service.db");
 var PortfolioDB = DB.create(__dirname+"/Portfolio.db");
-server.get("/", (req, res) => {
-  res.sendFile(path.resolve("./Public/index.html"));
-});
+
 /*PortfolioDB.insert([
     {
         href: "#portfolio",
