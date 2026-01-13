@@ -18,7 +18,7 @@ var DB=require("nedb-promises");
 var ServiceDB = DB.create(__dirname+"/Service.db");
 var PortfolioDB = DB.create(__dirname+"/Portfolio.db");
 server.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "Public", "index.html"));
+  res.sendFile(path.resolve("./Public/index.html"));
 });
 /*PortfolioDB.insert([
     {
