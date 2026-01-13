@@ -13,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
@@ -41,11 +42,11 @@
   </div>
 </nav>
     
-   <header>
-    <img id="bg" src="img/bg.png" alt="" srcset="">
-    <img id="ip" src="img/blue_ip.png"alt="" srcset="">
-    <img id="down" src="img/blue_down.png"alt="" srcset="">
-    <img id="water" src="img/blue_water.png"alt="" srcset="">
+   <header style="overflow: hidden;">
+    <img id="bg" src="img/bg.png" alt="" >
+    <img id="ip" src="img/blue_ip.png"alt="" >
+    <img id="down" src="img/blue_down.png"alt="" >
+    <img id="water" src="img/blue_water.png"alt="" >
     <h3 id="title">Portfolio</h3>
     
 <script>
@@ -74,8 +75,7 @@
       },
       scale: 2          
     });
-</script>
-<script>
+
   let colors = ["#8FB3D9", "#fec5fb", "#1F7AE0", "#9d95ff", "#EAF6FF", "#00bae2"];
 
   function animate() {
@@ -84,11 +84,11 @@
       backgroundColor: gsap.utils.random(colors),
       duration: 1,
       ease: "power1.inOut",
-      onComplete: animate  // 動畫結束後呼叫自己，達成持續動態
+      onComplete: animate  // 動畫持續
     });
   }
 
-  animate();  // 啟動動畫
+  animate();  
 </script>
 
 </header>
@@ -110,14 +110,14 @@
 <div class="box"></div>
         
 <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-  <!-- 指示點 -->
+  
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
   </div>
 
-  <!-- 圖片內容 -->
+  
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="img/see_that.jpg" class="d-block w-100" alt="">
@@ -131,7 +131,7 @@
   </div>
 
 
-  <!-- 左右箭頭 -->
+ 
   <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon"></span>
   </button>
@@ -142,62 +142,42 @@
 
 <marquee direction="right" height="30" scrollamount="5" behavior="alternate">2D Illustration ・ 3D Modeling ・ UV Mapping ・ Texturing ・ Lighting ・ Rendering</marquee>
 
-<div id="app" class="container mt-5">
+<div id="portfolio" class="container mt-5">
 
-  <section id="portfolio">
+<!-- 新增作品按鈕 & 表單 -->
+  <div class="row justify-content-center mb-5">
+    <div class="col-md-6 col-lg-4">
+      <button class="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#addWorkForm">
+        ＋ 新增作品
+      </button>
+
+      <div class="collapse mt-4" id="addWorkForm">
+        <h3>新增作品</h3>
+        <form @submit.prevent="addPortfolio" enctype="multipart/form-data">
+          <input v-model="newPortfolio.title" class="form-control mb-2" placeholder="作品名稱" name="title">
+          <input v-model="newPortfolio.description" class="form-control mb-2" placeholder="作品描述" name="description">
+          <input type="file" class="form-control mb-2" name="imageFile">
+          <button class="btn btn-primary w-100 mt-2">新增作品</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <section id="portfolio-section"> 
     <h2 class="mb-4">我的作品</h2>
     <div class="row mt-4">
-      <div v-for="item in Portfolio" :key="item._id" class="col-md-4 mb-4">
+      <div v-for="item in portfolio" :key="item._id" class="col-md-4 col-sm-6 mb-4">
         <div class="card h-100">
-          <img :src="item.image" class="card-img-top" :alt="item.title">
+          <img :src="item.imgSrc.startsWith('/') ? item.imgSrc : '/' + item.imgSrc" class="card-img-top" :alt="item.title">
           <div class="card-body">
             <h5 class="card-title">{{ item.title }}</h5>
-            <p class="card-text">{{ item.description }}</p>
+            <p class="card-text">{{ item.text }}</p>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  
-
-<script>
-const { createApp, ref, onMounted } = Vue;
-
-createApp({
-  setup() {
-    const Portfolio = ref([]);
-    const newPortfolio = ref({ title:'', description:'', image:'', href:'#' });
-
-    const fetchPortfolio = async () => {
-      try {
-        const res = await axios.get("/portfolio");
-        Portfolio.value = res.data;
-        console.log("抓到作品：", Portfolio.value);
-      } catch(err) {
-        console.error("抓資料錯誤：", err);
-      }
-    };
-
-    const addPortfolio = async () => {
-      try {
-        const res = await axios.post("/portfolio", newPortfolio.value);
-        Portfolio.value.push(res.data);
-        newPortfolio.value = { title:'', description:'', image:'', href:'#' };
-      } catch(err) {
-        console.error("新增作品錯誤：", err);
-      }
-    };
-
-    onMounted(fetchPortfolio);
-
-    return { Portfolio, newPortfolio, addPortfolio };
-  }
-}).mount("#app");
-</script>
-
-
-
+</div>
 
     <section id="gallery" class="container mt-5">
   <h2 class="mb-4">3D作品</h2>
@@ -294,22 +274,22 @@ createApp({
 
   
 
-        <!-- 聯絡我 -->
+        
 <section id="contact" class="mt-5 py-4">
     <div class="container">
         <h2 class="text-center mb-4 p-3">聯絡我</h2>
         <div class="row text-center">
-            <!-- 第一欄：Email -->
+            
             <div class="col-md-4 mb-3 mb-md-0">
                 <p>Email：</p>
                 <a href="mailto:xxs04021@gmail.com">xxs04021@gmail.com</a>
             </div>
-            <!-- 第二欄：Phone -->
+            
             <div class="col-md-4 mb-3 mb-md-0">
                 <p>Phone：</p>
                 <span>09********(不要打給我)</span>
             </div>
-            <!-- 第三欄：社群圖示 -->
+            
             <div class="col-md-4">
                 <p>社群媒體：</p>
                 <a href="#"><img src="img/fb.png" alt="fb" class="sc-icon me-2"></a>
@@ -323,24 +303,16 @@ createApp({
 
 
 
-    <!-- Bootstrap JS -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="js/bs5vue.js"></script> 
 
-<div class="container my-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-4">
-<h3 class="mt-5">新增作品</h3>
-  <form @submit.prevent="addPortfolio">
-    <input v-model="newPortfolio.title" placeholder="作品標題" required class="form-control mb-2">
-    <input v-model="newPortfolio.description" placeholder="作品描述" required class="form-control mb-2">
-    <input v-model="newPortfolio.image" placeholder="圖片路徑" required class="form-control mb-2">
-    <input v-model="newPortfolio.href" placeholder="作品連結" required class="form-control mb-2">
-    <button type="submit" class="btn btn-primary mt-2">新增作品</button>
-  </form>
 
-</div>
+
+
+
+
 
 
 </body>

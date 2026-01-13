@@ -4,14 +4,14 @@
 
 .sketchfab-wrap {
   width: 100%;
-  max-width: 1200px;   /* 控制最大寬度 */
+  max-width: 1200px;   
   margin: 0 auto;
 }
 
 .sketchfab-wrap iframe {
   width: 100%;
-  height: 70vh;        /* 🔥 直接放大 */
-  min-height: 500px;   /* 保底 */
+  height: 70vh;        
+  min-height: 500px;   
   border: none;
   border-radius: 12px;
 }
@@ -20,11 +20,11 @@
 
 
 .card-img-top {
-    transition: transform 0.3s ease; /* 平滑過渡 */
+    transition: transform 0.3s ease; 
 }
 
 .card-img-top:hover {
-    transform: scale(1.1); /* 放大 1.1 倍 */
+    transform: scale(1.1);
     cursor: pointer;
 }
 
@@ -34,25 +34,25 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Noto Sans TC", sans-serif;
-    overflow-x: hidden; /* 防止整頁被撐寬 */
+    overflow-x: hidden; 
 }
 
 header {
-    position: relative; /* 作為絕對定位子元素的參考 */
+    position: relative; 
     width: 100%;
-    height: 900px; /* 可以調整 header 高度 */
+    height: 900px; 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 header img {
-    position: absolute; /* 仍使用 absolute 可以重疊 header 內容 */
+    position: absolute; 
     top: 0;
-    left: 300px;       /* 等於避開 sidebar 的寬度 */
-    width: calc(100% - 300px); /* 填滿右側區域 */
+    left: 300px;       
+    width: calc(100% - 300px); 
     height: 100%;
-    object-fit: cover; /* 裁切填滿，解決白框 */
+    object-fit: cover; 
 }
 
  #title{
@@ -63,9 +63,9 @@ header img {
     }
 
 .content-background {
-    background-color: #e8f4ff; /* 你想要的背景色 */
-    padding-top: 50px; /* 上方留空，避免貼近 header */
-    padding-bottom: 50px; /* 下方留空 */
+    background-color: #e8f4ff; 
+    padding-top: 50px; 
+    padding-bottom: 50px; 
  }
 hr {
   border: none;
@@ -90,7 +90,7 @@ hr {
   }
 
 
-        /* 左側導覽欄 */
+        /* 左 */
         .sidebar {
             width: 300px;
             height: 100vh;
@@ -100,6 +100,7 @@ hr {
             position: fixed;
             left: 0;
             top: 0;
+            z-index: 1000;
         }
         .sidebar a {
             color: #2f3f5c;
@@ -121,7 +122,7 @@ hr {
             color: #fff;
         }
 
-        /* 右側內容 */
+        /* 右 */
         .content {
             margin-left: 280px;
             padding: 40px;
@@ -142,7 +143,7 @@ hr {
 
         h2 {
             font-weight: bold;
-            font-size: 36px; /* 可以改成你想要的大小 */
+            font-size: 36px; 
         }
 
          h5 {
@@ -157,9 +158,9 @@ hr {
         }
 
         .sc-icon {
-            width: 32px;       /* 控制圖示大小 */
+            width: 32px;       
             height: 32px;
-            margin-right: 10px; /* 圖示間距 */
+            margin-right: 10px; 
             vertical-align: middle;
         }
         
