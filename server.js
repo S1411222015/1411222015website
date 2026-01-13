@@ -1,6 +1,6 @@
-var express = require("express");
-var server = express();
-var bodyParser = require("body-parser");
+var express = require("express"); //web
+var server = express();           //get.use
+var bodyParser = require("body-parser");  
 
 
 server.set("view engine", 'ejs');
@@ -11,7 +11,7 @@ var fileUpload = require("express-fileupload");
 server.use(express.static(__dirname + "/Public"));
 server.use(bodyParser.urlencoded());
 server.use(bodyParser.json());
-server.use(fileUpload({limits:{fileSize:2*1024*1024}}))
+server.use(fileUpload({limits:{fileSize:2*1024*1024}}))  //限
 
 var DB=require("nedb-promises");
 var ServiceDB = DB.create(__dirname+"/Service.db");
@@ -97,7 +97,7 @@ server.get("/services", (req, res) => {
 
 server.get("/portfolio", (req, res) => {
     PortfolioDB.find({}).then(results => {
-        res.send(results);
+        res.send(results);  //回傳
     });
 });
 
@@ -119,7 +119,7 @@ server.post("/portfolio_add", async (req, res) => {
         let imgSrc = "";
 
         if (req.files && req.files.imageFile) {
-            const file = req.files.imageFile;
+            const file = req.files.imageFile;  //存變數 file
             await file.mv(__dirname + "/Public/upload/" + file.name);
             imgSrc = "/upload/" + file.name;
         }

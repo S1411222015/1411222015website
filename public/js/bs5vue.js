@@ -14,7 +14,7 @@ var portfolioApp = Vue.createApp({
     },
 
     methods: {
-        // 抓取作品列表
+        // 抓作品
         fetchPortfolio() {
             $.ajax({
                 url: "/portfolio",
@@ -27,28 +27,28 @@ var portfolioApp = Vue.createApp({
             });
         },
 
-        // 新增作品
+        // 新增
         async addPortfolio() {
             try {
                 const form = document.querySelector("#addWorkForm form");
-                const formData = new FormData(form);
+                const formData = new FormData(form);  //轉成post可傳的格式
 
                 const response = await fetch("/portfolio_add", {
                     method: "POST",
-                    body: formData
+                    body: formData  //送
                 });
 
-                const result = await response.json();
+                const result = await response.json();  //等.解json
 
                 if (result.success) {
                     alert("作品新增成功");
 
-                    // 清空表單
+                    // 清
                     this.newPortfolio.title = "";
                     this.newPortfolio.description = "";
                     
 
-                    // 將新增作品加入 portfolio（後端已回傳完整資料）
+                    // 將新作品加入portfolio
                     const newItem = result.newItem;
                     if (newItem) {
                         this.portfolio.push({
@@ -71,7 +71,7 @@ var portfolioApp = Vue.createApp({
     },
 
     mounted() {
-        // 初始化抓作品
+       
         this.fetchPortfolio();
     }
     
