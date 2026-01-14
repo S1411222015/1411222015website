@@ -5,7 +5,7 @@ var portfolioApp = Vue.createApp({
         return {
             portfolio: [],
 
-            // 對應表單 v-model
+            
             newPortfolio: {
                 title: "",
                 description: ""
@@ -31,9 +31,9 @@ var portfolioApp = Vue.createApp({
         async addPortfolio() {
             try {
                 const form = document.querySelector("#addWorkForm form");
-                const formData = new FormData(form);  //轉成post可傳的格式
+                const formData = new FormData(form);  //打包轉成post可傳格式
 
-                const response = await fetch("/portfolio_add", {
+                const response = await fetch("/portfolio_add", {          //要求
                     method: "POST",
                     body: formData  //送
                 });
@@ -48,7 +48,7 @@ var portfolioApp = Vue.createApp({
                     this.newPortfolio.description = "";
                     
 
-                    // 將新作品加入portfolio
+                    // 新作品加入
                     const newItem = result.newItem;
                     if (newItem) {
                         this.portfolio.push({

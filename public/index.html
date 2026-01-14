@@ -144,7 +144,7 @@
 
 <div id="portfolio" class="container mt-5">
 
-<!-- 新增作品按鈕 & 表單 -->
+<!-- 表單 -->
   <div class="row justify-content-center mb-5">
     <div class="col-md-6 col-lg-4">
       <button class="btn btn-outline-primary w-100" data-bs-toggle="collapse" data-bs-target="#addWorkForm">
@@ -155,8 +155,8 @@
         <h3>新增作品</h3>
         <form @submit.prevent="addPortfolio" enctype="multipart/form-data">
           <input v-model="newPortfolio.title" class="form-control mb-2" placeholder="作品名稱" name="title">
-          <input v-model="newPortfolio.description" class="form-control mb-2" placeholder="作品描述" name="description">
-          <input type="file" class="form-control mb-2" name="imageFile">
+          <input v-model="newPortfolio.description" class="form-control mb-2" placeholder="作品描述" name="text">
+          <input type="file" class="form-control mb-2" name="imgSrc">
           <button class="btn btn-primary w-100 mt-2">新增作品</button>
         </form>
       </div>

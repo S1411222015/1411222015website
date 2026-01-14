@@ -124,11 +124,11 @@ server.post("/portfolio_add", async (req, res) => {
             imgSrc = "/upload/" + file.name;
         }
 
-        // 非同步等待 DB 插入完成，並取得 _id
+        // 等資料插入完成，回傳的
         const newItem = await PortfolioDB.insert({
             title: req.body.title,
             text: req.body.description,
-            imgSrc: imgSrc
+            imgSrc: imageFile
         });
 
         // 回傳完整資料給前端
