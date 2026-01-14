@@ -4,8 +4,8 @@ var server = express();           //get.use
 var bodyParser = require("body-parser");  
 
 
-server.set("view engine", 'ejs');
-server.set("views", __dirname+"/view")
+//server.set("view engine", 'ejs');
+//server.set("views", __dirname+"/view")
 
 var fileUpload = require("express-fileupload");
 
