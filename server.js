@@ -1,3 +1,4 @@
+const path = require("path");
 var express = require("express"); //web
 var server = express();           //get.use
 var bodyParser = require("body-parser");  
@@ -8,7 +9,7 @@ server.set("views", __dirname+"/view")
 
 var fileUpload = require("express-fileupload");
 
-server.use(express.static(__dirname + "/Public"));
+server.use(express.static(path.join(__dirname, "public")));
 server.use(bodyParser.urlencoded());
 server.use(bodyParser.json());
 server.use(fileUpload({limits:{fileSize:2*1024*1024}}))  //限
@@ -120,7 +121,7 @@ server.post("/portfolio_add", async (req, res) => {
 
         if (req.files && req.files.imageFile) {
             const file = req.files.imageFile;  //存變數 file
-            await file.mv(__dirname + "/Public/upload/" + file.name);
+            await file.mv(__dirname + "/public/upload/" + file.name);
             imgSrc = "/upload/" + file.name;
         }
 
@@ -128,7 +129,7 @@ server.post("/portfolio_add", async (req, res) => {
         const newItem = await PortfolioDB.insert({
             title: req.body.title,
             text: req.body.description,
-            imgSrc: imageFile
+            imgSrc: imgSrc
         });
 
         // 回傳完整資料給前端
@@ -140,8 +141,11 @@ server.post("/portfolio_add", async (req, res) => {
     }
 });
 
+server.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
-
-server.listen(8090, () => {
-  console.log("Server running on http://localhost:8090");
+const PORT = process.env.PORT || 8090;
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
